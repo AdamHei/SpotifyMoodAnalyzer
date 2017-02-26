@@ -4,22 +4,12 @@ var router = express.Router();
 var spotLogic = require('../spotifylogic');
 
 
-var getPlaylists = function () {
-    spotifyAPI.getPlaylist('starbucks517', '0TD7pSQAj4csbCcJORMbWo')
-        .then(function (data) {
-            console.log(data);
-        }, function (err) {
-            console.error(err);
-        });
-};
-
 router.get('/', function (req, res, next) {
     res.send('Hello');
 });
 
 router.get('/:user_id', function (req, res, next) {
     spotLogic.getPlaylists(req.params['user_id'], function (playlists) {
-        console.log(playlists);
         res.send(playlists);
     }, function (err) {
         console.error(err);
@@ -29,7 +19,6 @@ router.get('/:user_id', function (req, res, next) {
 
 router.get('/:user_id/:playlist_id', function (req, res, next) {
     var user_id = req.params['user_id'], playlist_id = req.params['playlist_id'];
-    console.log(user_id, playlist_id);
     spotLogic.getPlaylistSentiment(user_id, playlist_id, function (playlist_sentiment) {
         res.send(playlist_sentiment);
     }, function (err) {

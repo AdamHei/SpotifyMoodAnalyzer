@@ -5,11 +5,6 @@ var exports = module.exports = {};
 
 exports.findSentiment = function (song_details_arr, succ_func, err_func) {
     addSentiment(song_details_arr);
-
-    console.log(song_details_arr);
-
-
-    //TODO Replace
     succ_func(song_details_arr);
 };
 

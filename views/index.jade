@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p Base url: 192.168.43.158:3000
+  h2 API
+  h4 /playlists/:userid
+  p Fetch all public playlists for a user
+  h4 /playlists/:userid/:playlistid
+  p Fetch all songs and sentiment for a given playlist

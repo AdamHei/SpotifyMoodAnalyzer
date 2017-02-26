@@ -1,4 +1,3 @@
-var sentiment = require('sentiment');
 var SpotifyWebAPI = require('spotify-web-api-node');
 var analyrics = require('analyrics');
 var sentimentLog = require('./sentimentlogic');
@@ -83,7 +82,6 @@ var pruneNamesWithArtistAndID = function (playlist) {
 
 
 var getLyrics = function (track_data_arr, succ_func) {
-    console.log("made it ");
     for (var i = 0; i < track_data_arr.length; i++){
         getLyricsHelper(track_data_arr, i, succ_func);
     }
@@ -92,8 +90,6 @@ var getLyrics = function (track_data_arr, succ_func) {
 var getLyricsHelper = function (track_data_arr, i, succ_func) {
     var obj = track_data_arr[i];
     var query = obj.name + " " + obj.artist;
-
-    console.log(query);
 
     analyrics.getSong(query, function (res) {
 
